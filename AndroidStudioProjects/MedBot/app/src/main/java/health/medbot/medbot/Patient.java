@@ -144,4 +144,9 @@ public class Patient {
     public void setUrgentStatus(boolean stat) {
         this.urgentStatus = stat;
     }
+
+    public static Patient getPatient(int patientId) {
+        //TODO: return a real patient
+        return new Patient(patientId, "fake name", "fake location", new Date(), 'o', 50.2, 55521, false, false, false);
+    }
 }
