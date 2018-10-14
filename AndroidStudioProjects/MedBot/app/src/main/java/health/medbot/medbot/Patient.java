@@ -64,13 +64,8 @@ public class Patient {
      * @param sexActive Boolean
      * @param chronConditions Boolean
      */
-<<<<<<< HEAD
     public Patient(int pID, String name, String location, Calendar dob, char sex, double height, double weight,
                  boolean sexActive, boolean chronConditions, boolean uStat) {
-=======
-    public Patient(int pID, String name, String location, String dob, char sex, double height, double weight,
-                 boolean sexActive, boolean chronConditions, boolean uStat, String notes) {
->>>>>>> a67503e239c5d8814a8232526d2ed0f24f74a216
         this.pid = pID;
         this.name = name;
         this.location = location;
