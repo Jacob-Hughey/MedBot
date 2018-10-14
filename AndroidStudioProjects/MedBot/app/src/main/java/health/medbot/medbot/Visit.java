@@ -62,24 +62,24 @@ public class Visit {
      *
      * @param pID
      * @param adminID
-     * @param d
-     * @param nts
+     * @param date
+     * @param notes
      * @param height
      * @param weight
-     * @param sxActv
+     * @param sexActive
      */
-    public Visit(int pID, int adminID, String d, String nts, double height, double weight,
-                 boolean sxActv, String symp, boolean chron, boolean uSat) {
+    public Visit(int pID, int adminID, String date, String notes, double height, double weight,
+                 boolean sexActive, String symp, boolean chron, boolean isUrgent) {
         this.pID = pID;
         this.adminID = adminID;
-        this.vDate = d;
-        this.notes = nts;
+        this.vDate = date;
+        this.notes = notes;
         this.height = height;
         this.weight = weight;
-        this.sexActive = sxActv;
+        this.sexActive = sexActive;
         this.symptoms = symp;
         this.isChronic = chron;
-        this.urgentStat = uSat;
+        this.urgentStat = isUrgent;
     }
 
     public Visit() {}

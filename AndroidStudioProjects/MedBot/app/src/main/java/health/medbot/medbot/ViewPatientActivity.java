@@ -16,15 +16,21 @@ public class ViewPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_patient);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         pid = getIntent().getIntExtra("pid", -1);
-        System.out.println("pid=" + pid);
         Patient patient = Patient.getPatient(pid);
         loadPatientData(patient);
     }
 
     public void newVisit(View view) {
-        //TOOD: open new visit activity
+        Intent intent = new Intent(getBaseContext(), NewVisitActivity.class);
+        intent.putExtra("pid", pid);
+        startActivity(intent);
     }
 
     public void editPatient(View view) {
@@ -35,21 +41,17 @@ public class ViewPatientActivity extends AppCompatActivity {
 
     private void loadPatientData(Patient patient) {
         TextView name = findViewById(R.id.name);
-        name.setText(patient.getName());
-
         TextView sexAndAge = findViewById(R.id.sexAndAge);
-        sexAndAge.setText(patient.getSexName() + ", " + patient.getDob());
-
         TextView location = findViewById(R.id.location);
-        location.setText(patient.getLocation());
-
         TextView heightAndWeight = findViewById(R.id.heightAndWeight);
-        heightAndWeight.setText(patient.getHeight() + " cm, " + patient.getWeight() + " kg");
-
         TextView isSexuallyActive = findViewById(R.id.sexuallyActive);
-        isSexuallyActive.setText(patient.sexActive ? " IS Sexually Active" : "NOT Sexually Active");
-
         TextView notes = findViewById(R.id.notes);
+
+        name.setText(patient.getName());
+        sexAndAge.setText(patient.getSexName() + ", " + patient.getDob());
+        location.setText(patient.getLocation());
+        heightAndWeight.setText(patient.getHeight() + " cm, " + patient.getWeight() + " kg");
+        isSexuallyActive.setText(patient.sexActive ? " IS Sexually Active" : "NOT Sexually Active");
         notes.setText(patient.getNotes());
     }
 }

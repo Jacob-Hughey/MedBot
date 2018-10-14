@@ -17,6 +17,11 @@ public class NewPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_patient);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         int pid = getIntent().getIntExtra("pid", 0);
         this.pid = pid;
@@ -81,14 +86,15 @@ public class NewPatientActivity extends AppCompatActivity {
         if (pid == 0) {
             pid = (int)MainActivity.db.userDao().insertPatient(patient);
             patient.pid = pid;
+
+            //load view of patient in new activity
+            Intent intent = new Intent(getBaseContext(), ViewPatientActivity.class);
+            intent.putExtra("pid", patient.getpId());
+            startActivity(intent);
         }
         else {
             MainActivity.db.userDao().updatePatient(patient);
+            finish();
         }
-
-        //load view of patient in new activity
-        Intent intent = new Intent(getBaseContext(), ViewPatientActivity.class);
-        intent.putExtra("pid", patient.getpId());
-        startActivity(intent);
     }
 }

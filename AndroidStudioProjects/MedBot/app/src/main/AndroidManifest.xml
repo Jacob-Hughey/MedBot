@@ -7,7 +7,8 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-    <application android:name="health.medbot.medbot.MedBot"
+    <application
+        android:name=".MedBot"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -21,9 +22,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewPatientActivity" />
+        <activity android:name=".NewPatientActivity" android:noHistory="true" />
         <activity android:name=".ViewPatientActivity" />
-        <activity android:name=".ViewVisitActivity"></activity>
+        <activity android:name=".ViewVisitActivity" />
+        <activity android:name=".NewVisitActivity" android:noHistory="true"></activity>
     </application>
 
 </manifest>
