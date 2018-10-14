@@ -4,8 +4,6 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
-
 /**
  * File: Visit.java
  *
@@ -20,7 +18,7 @@ import java.util.Date;
  * Created by Brandon Adame Gachuz on 10/13/18.
  */
 
-@Entity
+@Entity(tableName = "visit")
 public class Visit {
 
     @PrimaryKey(autoGenerate = true)
@@ -33,7 +31,7 @@ public class Visit {
     private int adminID;
 
     @ColumnInfo(name = "visit_date")
-    private Date vDate;
+    private String vDate;
 
     @ColumnInfo(name = "notes")
     private String notes;
@@ -47,6 +45,10 @@ public class Visit {
     @ColumnInfo(name = "sexually_active")
     private boolean sexActive;
 
+    @ColumnInfo(name = "patient_symptoms")
+    private String symptoms;
+
+    //TODO: Add search functionality by name, save visit to database
 
     /**
      *
@@ -58,8 +60,8 @@ public class Visit {
      * @param weight
      * @param sxActv
      */
-    public Visit(int pID, int adminID, Date d, String nts, double height, double weight,
-                 boolean sxActv) {
+    public Visit(int pID, int adminID, String d, String nts, double height, double weight,
+                 boolean sxActv, String symp) {
         this.pID = pID;
         this.adminID = adminID;
         this.vDate = d;
@@ -67,10 +69,11 @@ public class Visit {
         this.height = height;
         this.weight = weight;
         this.sexActive = sxActv;
+        this.symptoms = symp;
     }
 
-    public Visit(Patient p, double weight) {
-        p.setWeight(weight);
+    public Visit(Patient p) {
+
     }
 
     public String getNotes() {
@@ -93,7 +96,15 @@ public class Visit {
         return this.adminID;
     }
 
-    public Date getvDate() {
+    public String getvDate() {
         return this.vDate;
+    }
+
+    public String getSymptoms() {
+        return this.symptoms;
+    }
+
+    public void updatePatient() {
+
     }
 }
