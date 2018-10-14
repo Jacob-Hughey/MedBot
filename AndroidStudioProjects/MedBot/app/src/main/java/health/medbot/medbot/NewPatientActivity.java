@@ -28,10 +28,10 @@ public class NewPatientActivity extends AppCompatActivity {
     }
 
     private void loadFromPatient(Patient patient) {
-        return;
-        /*
-        CheckBox isUrgentView = findViewById(R.id.isUrgent);
+        this.pid = patient.getpId();
+
         EditText nameView = findViewById(R.id.name);
+        CheckBox isUrgentView = findViewById(R.id.isUrgent);
         EditText locationView = findViewById(R.id.location);
         EditText dobView = findViewById(R.id.dob);
         RadioGroup sexView = findViewById(R.id.sexRadio);
@@ -41,8 +41,16 @@ public class NewPatientActivity extends AppCompatActivity {
         RadioGroup sexuallyActiveView = findViewById(R.id.sexuallyActive);
         RadioButton selectedSexuallyActiveView = findViewById(sexuallyActiveView.getCheckedRadioButtonId());
         EditText notes = findViewById(R.id.notes);
-        */
-        //isUrgentView.setChecked(patient.);
+
+        nameView.setText(patient.name);
+        isUrgentView.setChecked(patient.getUrgentStatus());
+        locationView.setText(patient.getLocation());
+        dobView.setText(patient.getDob());
+        //TODO: sex radio
+        heightView.setText(Double.toString(patient.getHeight()));
+        weightView.setText(Double.toString(patient.getWeight()));
+        //TODO: sexually active radio
+        notes.setText(patient.getNotes());
     }
 
     public void SaveRecord(View view) {
