@@ -13,7 +13,9 @@ import android.arch.persistence.room.PrimaryKey;
  *  - Height
  *  - Weight
  *  - Any chronic conditions
- *  - Patient location
+ *  - Add notes
+ *  - Symptoms
+ *  - Boolean value to check if patient has chronic conditions
  *
  * Created by Brandon Adame Gachuz on 10/13/18.
  */
@@ -25,30 +27,36 @@ public class Visit {
     public int visitID;
 
     @ColumnInfo(name = "pid")
-    private int pID;
+    public int pID;
 
     @ColumnInfo(name = "admin_id")
-    private int adminID;
+    public int adminID;
 
     @ColumnInfo(name = "visit_date")
-    private String vDate;
+    public String vDate;
 
     @ColumnInfo(name = "notes")
-    private String notes;
+    public String notes;
 
     @ColumnInfo(name = "height")
-    private double height;
+    public double height;
 
     @ColumnInfo(name = "weight")
-    private double weight;
+    public double weight;
 
     @ColumnInfo(name = "sexually_active")
-    private boolean sexActive;
+    public boolean sexActive;
 
     @ColumnInfo(name = "patient_symptoms")
-    private String symptoms;
+    public String symptoms;
 
-    //TODO: Add search functionality by name, save visit to database
+    @ColumnInfo(name = "is_chronic")
+    public boolean isChronic;
+
+    @ColumnInfo(name = "urgent_status")
+    public boolean urgentStat;
+
+    //TODO: Add search functionality by name
 
     /**
      *
@@ -61,7 +69,7 @@ public class Visit {
      * @param sxActv
      */
     public Visit(int pID, int adminID, String d, String nts, double height, double weight,
-                 boolean sxActv, String symp) {
+                 boolean sxActv, String symp, boolean chron, boolean uSat) {
         this.pID = pID;
         this.adminID = adminID;
         this.vDate = d;
@@ -70,11 +78,11 @@ public class Visit {
         this.weight = weight;
         this.sexActive = sxActv;
         this.symptoms = symp;
+        this.isChronic = chron;
+        this.urgentStat = uSat;
     }
 
-    public Visit(Patient p) {
-
-    }
+    public Visit() {}
 
     public String getNotes() {
         return this.notes;
@@ -104,7 +112,20 @@ public class Visit {
         return this.symptoms;
     }
 
-    public void updatePatient() {
-
+    public boolean getIsChronic() {
+        return this.isChronic;
     }
+
+    public boolean geturgentStatus() {
+        return this.urgentStat;
+    }
+
+    public void updatePatient(Patient p) {
+        p.setWeight(this.weight);
+        p.setSexActive(this.sexActive);
+        p.setChronConditions(this.isChronic);
+        p.setUrgentStatus(this.urgentStat);
+    }
+
+
 }

@@ -13,18 +13,22 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="16dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:srcCompat="@tools:sample/avatars[13]" />
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            android:contentDescription="Profile picture"
+            android:scaleType="fitCenter"
+            tools:srcCompat="@mipmap/ic_launcher_round" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -74,14 +78,14 @@
     </LinearLayout>
 
     <ScrollView
+        android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,11 +103,12 @@
                 android:text="Notes" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:editable="false"
                 android:ems="10"
-                android:inputType="textMultiLine"
+                android:inputType="none"
                 android:text="eag\neafeagea\n\n\n\n\\nn\n\eageageagea" />
 
             <View
