@@ -59,8 +59,9 @@
                 android:id="@+id/date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:editable="false"
                 android:ems="10"
-                android:inputType="date" />
+                android:inputType="none" />
         </TableRow>
 
         <TableRow
@@ -77,9 +78,10 @@
                 android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:editable="false"
                 android:ems="10"
                 android:hint="centimeters"
-                android:inputType="numberDecimal" />
+                android:inputType="none" />
         </TableRow>
 
         <TableRow
@@ -96,9 +98,10 @@
                 android:id="@+id/weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:editable="false"
                 android:ems="10"
                 android:hint="kilograms"
-                android:inputType="numberDecimal" />
+                android:inputType="none" />
         </TableRow>
 
         <TableRow
@@ -127,6 +130,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="false"
+                        android:editable="false"
                         android:text="Yes" />
 
                     <RadioButton
@@ -134,6 +139,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:clickable="false"
+                        android:editable="false"
                         android:text="No" />
                 </LinearLayout>
 
@@ -176,8 +183,9 @@
             android:id="@+id/symptoms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="none" />
 
         <TextView
             android:id="@+id/textView9"
@@ -189,14 +197,44 @@
             android:id="@+id/notes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:editable="false"
             android:ems="10"
-            android:inputType="textMultiLine" />
+            android:inputType="none" />
 
         <CheckBox
             android:id="@+id/isUrgent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="false"
+            android:editable="false"
+            android:focusable="auto"
             android:text="Needs Urgent Attention" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Possible Dianosis"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/diagnosis"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:editable="false"
+                android:ems="10"
+                android:inputType="none"
+                android:text="MALARIA"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
     </LinearLayout>
 

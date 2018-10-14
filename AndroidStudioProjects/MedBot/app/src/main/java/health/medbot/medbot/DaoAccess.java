@@ -22,6 +22,12 @@ public interface DaoAccess {
     @Update
     void updatePatient(Patient p);
 
+    @Insert
+    long insertVisit(Visit v);
+
+    @Query("SELECT * FROM visit WHERE visitID = :vid")
+    Visit getVisit(int vid);
+
     @Query("SELECT * FROM patient")
     List<Patient> getAll();
 

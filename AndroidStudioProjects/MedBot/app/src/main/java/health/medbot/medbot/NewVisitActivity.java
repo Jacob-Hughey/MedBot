@@ -1,5 +1,6 @@
 package health.medbot.medbot;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,13 +35,16 @@ public class NewVisitActivity extends AppCompatActivity {
         Visit visit = new Visit(pid, 0, dateView.getText().toString(), notesView.getText().toString(),
                 Double.parseDouble(heightView.getText().toString()), Double.parseDouble(weightView.getText().toString()),
                 false, symptomsView.getText().toString(), false, isUrgentView.isChecked());
-        //TODO: insert visit
+
+        int visitId = (int) MainActivity.db.userDao().insertVisit(visit);
 
         //update patient profile with new stuff
         Patient patient = Patient.getPatient(pid);
         visit.updatePatient(patient);
         MainActivity.db.userDao().updatePatient(patient);
 
-        finish();
+        Intent intent = new Intent(getBaseContext(), ViewVisitActivity.class);
+        intent.putExtra("vid", visitId);
+        startActivity(intent);
     }
 }
