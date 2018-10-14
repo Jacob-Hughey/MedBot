@@ -23,7 +23,10 @@ import java.util.Date;
 @Entity
 public class Visit {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    public int visitID;
+
+    @ColumnInfo(name = "pid")
     private int pID;
 
     @ColumnInfo(name = "admin_id")
@@ -66,6 +69,10 @@ public class Visit {
         this.sexActive = sxActv;
     }
 
+    public Visit(Patient p, double weight) {
+        p.setWeight(weight);
+    }
+
     public String getNotes() {
         return this.notes;
     }
@@ -81,4 +88,10 @@ public class Visit {
     public boolean getSexActive() {
         return this.sexActive;
     }
+
+    public int getAdminID() {
+        return this.adminID;
+    }
+
+
 }

@@ -16,7 +16,7 @@ import java.util.Date;
 public class Patient {
 
     @NonNull
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int pid;
 
     @ColumnInfo(name = "name")

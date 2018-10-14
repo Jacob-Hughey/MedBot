@@ -1,6 +1,7 @@
 package health.medbot.medbot;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
 import java.util.List;
@@ -14,11 +15,14 @@ import java.util.List;
 @Dao
 public interface DaoAccess {
 
+    @Insert
+    public void insertPatient(Patient p);
+
     @Query("SELECT * FROM patient")
-    List<Patient> getAll();
+    public List<Patient> getAll();
 
     @Query("SELECT pid FROM patient")
-    int getpID();
+    public int getpID();
 
 
 }
