@@ -26,6 +26,7 @@
             android:id="@+id/findPatient"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:onClick="clickSearch"
             android:text="Find Patient"
             android:textSize="24sp" />
 
@@ -33,6 +34,7 @@
             android:id="@+id/newPatient"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:onClick="clickNewPatient"
             android:text="New Patient"
             android:textSize="24sp" />
     </LinearLayout>
