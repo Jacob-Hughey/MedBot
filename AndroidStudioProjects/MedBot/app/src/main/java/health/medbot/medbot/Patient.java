@@ -44,6 +44,9 @@ public class Patient {
     @ColumnInfo(name = "urgent_status")
     public boolean urgentStatus;
 
+    @ColumnInfo(name = "notes")
+    public String notes;
+
     /**
      * Constructor to define a user
      *
@@ -144,7 +147,23 @@ public class Patient {
         this.sex = sex;
     }
 
+    public String getNotes() { return this.notes; }
+
     public static Patient getPatient(int pid) {
        return MainActivity.db.userDao().getPatient(pid);
+    }
+
+    public String getSexName() {
+        switch (Character.toLowerCase(sex)) {
+            case 'f': return "Female";
+            case 'm': return "Male";
+            default: return "Other";
+        }
+    }
+
+    public int getYearsOld() {
+        //Date bornDate = new Date(dob);
+        //return new Date().getYear() - bornDate.getYear();
+        return 0; //TODO: implement this
     }
 }
