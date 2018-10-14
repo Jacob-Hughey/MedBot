@@ -18,6 +18,7 @@ class DataBaseHelper extends SQLiteOpenHelper {
     //The Android's default system path of your application database.
     private static String DB_PATH = "/data/data/medbot/src/main/assets/";
 
+
     private static String DB_NAME = "please_dont_delete_this_data";
 
     private SQLiteDatabase myDataBase;

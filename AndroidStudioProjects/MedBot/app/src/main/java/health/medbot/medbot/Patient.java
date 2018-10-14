@@ -1,9 +1,13 @@
 package health.medbot.medbot;
 
+import android.annotation.TargetApi;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+
+import java.util.Calendar;
+import java.time.Year;
 
 /**
  * File: Patient.java
@@ -47,6 +51,7 @@ public class Patient {
     @ColumnInfo(name = "notes")
     public String notes;
 
+
     /**
      * Constructor to define a user
      *
@@ -60,7 +65,7 @@ public class Patient {
      * @param chronConditions Boolean
      */
     public Patient(int pID, String name, String location, String dob, char sex, double height, double weight,
-                 boolean sexActive, boolean chronConditions, boolean uStat, String notes) {
+                 boolean sexActive, boolean chronConditions, boolean uStat) {
         this.pid = pID;
         this.name = name;
         this.location = location;
@@ -94,7 +99,6 @@ public class Patient {
     public String getDob() {
         return this.dob;
     }
-
 
     public double getHeight() {
         return this.height;
@@ -160,11 +164,5 @@ public class Patient {
             case 'm': return "Male";
             default: return "Other";
         }
-    }
-
-    public int getYearsOld() {
-        //Date bornDate = new Date(dob);
-        //return new Date().getYear() - bornDate.getYear();
-        return 0; //TODO: implement this
     }
 }
