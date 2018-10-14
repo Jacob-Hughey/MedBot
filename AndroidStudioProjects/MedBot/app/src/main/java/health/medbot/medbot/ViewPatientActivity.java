@@ -24,7 +24,7 @@ public class ViewPatientActivity extends AppCompatActivity {
         name.setText(patient.getName());
 
         TextView sexAndAge = findViewById(R.id.sexAndAge);
-        sexAndAge.setText(patient.getSexName() + ", " + patient.getYearsOld());
+        sexAndAge.setText(patient.getSexName() + ", " + patient.getDob());
 
         TextView location = findViewById(R.id.location);
         location.setText(patient.getLocation());

@@ -28,7 +28,7 @@ public class Patient {
     public String location;
 
     @ColumnInfo(name = "DOB")
-    public Calendar dob;
+    public String dob;
 
     @ColumnInfo(name = "sex")
     public char sex;
@@ -64,7 +64,7 @@ public class Patient {
      * @param sexActive Boolean
      * @param chronConditions Boolean
      */
-    public Patient(int pID, String name, String location, Calendar dob, char sex, double height, double weight,
+    public Patient(int pID, String name, String location, String dob, char sex, double height, double weight,
                  boolean sexActive, boolean chronConditions, boolean uStat) {
         this.pid = pID;
         this.name = name;
@@ -97,9 +97,8 @@ public class Patient {
     }
 
     public String getDob() {
-        return this.dob.toString();
+        return this.dob;
     }
-
 
     public double getHeight() {
         return this.height;
@@ -153,10 +152,6 @@ public class Patient {
         this.sex = sex;
     }
 
-    public void setDOB(int year, int month, int d) {
-        this.dob.set(year, month, d);
-    }
-
     public String getNotes() { return this.notes; }
 
     public static Patient getPatient(int pid) {
@@ -169,10 +164,5 @@ public class Patient {
             case 'm': return "Male";
             default: return "Other";
         }
-    }
-
-    @TargetApi(26)
-    public int getYearsOld() {
-        return Integer.valueOf(Year.now().toString()) - this.dob.get(this.dob.YEAR);
     }
 }
