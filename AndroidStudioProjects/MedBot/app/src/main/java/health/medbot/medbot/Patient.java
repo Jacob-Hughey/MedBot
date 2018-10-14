@@ -65,7 +65,7 @@ public class Patient {
      * @param chronConditions Boolean
      */
     public Patient(int pID, String name, String location, String dob, char sex, double height, double weight,
-                 boolean sexActive, boolean chronConditions, boolean uStat) {
+                 boolean sexActive, boolean chronConditions, boolean uStat, String notes) {
         this.pid = pID;
         this.name = name;
         this.location = location;
