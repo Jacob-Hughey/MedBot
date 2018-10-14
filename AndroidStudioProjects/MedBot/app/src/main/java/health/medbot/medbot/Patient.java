@@ -14,7 +14,6 @@ import android.support.annotation.NonNull;
 @Entity(tableName = "Patient")
 public class Patient {
 
-    @NonNull
     @PrimaryKey(autoGenerate = true)
     public int pid;
 

@@ -13,7 +13,9 @@ import android.arch.persistence.room.PrimaryKey;
  *  - Height
  *  - Weight
  *  - Any chronic conditions
- *  - Patient location
+ *  - Add notes
+ *  - Symptoms
+ *  - Boolean value to check if patient has chronic conditions
  *
  * Created by Brandon Adame Gachuz on 10/13/18.
  */
@@ -124,4 +126,6 @@ public class Visit {
         p.setChronConditions(this.isChronic);
         p.setUrgentStatus(this.urgentStat);
     }
+
+
 }
