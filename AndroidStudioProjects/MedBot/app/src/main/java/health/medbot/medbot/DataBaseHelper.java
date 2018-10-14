@@ -151,7 +151,18 @@ class DataBaseHelper extends SQLiteOpenHelper {
     // Add your public helper methods to access and get content from the database.
     // You could return cursors by doing "return myDataBase.query(....)" so it'd be easy
     // to you to create adapters for your views.
-    public Cursor queryDisease(String symptoms) {
+    public Cursor queryDisease1(String symptoms) {
         return myDataBase.rawQuery("SELECT * FROM diseases WHERE Contains(symptoms) --case insensitive", null);
+    }
+    public Cursor queryDisease2(String symptoms) {
+        String[] symptomList = symptoms.split(",");
+        int j = 0;
+        String symptomQuery = "SELECT * FROM diseases WHERE symptoms LIKE " + symptomList[j];
+        int i = symptomList.length - 1;
+        while (i > 0) {
+            j++;
+            symptomQuery += " OR " + symptomList[j];
+        }
+        return myDataBase.rawQuery(symptomQuery, null);
     }
 }
