@@ -1,9 +1,13 @@
 package health.medbot.medbot;
 
+import android.annotation.TargetApi;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
+
+import java.util.Calendar;
+import java.time.Year;
 
 /**
  * File: Patient.java
@@ -24,7 +28,7 @@ public class Patient {
     public String location;
 
     @ColumnInfo(name = "DOB")
-    public String dob;
+    public Calendar dob;
 
     @ColumnInfo(name = "sex")
     public char sex;
@@ -47,6 +51,7 @@ public class Patient {
     @ColumnInfo(name = "notes")
     public String notes;
 
+
     /**
      * Constructor to define a user
      *
@@ -59,7 +64,7 @@ public class Patient {
      * @param sexActive Boolean
      * @param chronConditions Boolean
      */
-    public Patient(int pID, String name, String location, String dob, char sex, double height, double weight,
+    public Patient(int pID, String name, String location, Calendar dob, char sex, double height, double weight,
                  boolean sexActive, boolean chronConditions, boolean uStat) {
         this.pid = pID;
         this.name = name;
@@ -91,7 +96,7 @@ public class Patient {
     }
 
     public String getDob() {
-        return this.dob;
+        return this.dob.toString();
     }
 
 
@@ -147,6 +152,10 @@ public class Patient {
         this.sex = sex;
     }
 
+    public void setDOB(int year, int month, int d) {
+        this.dob.set(year, month, d);
+    }
+
     public String getNotes() { return this.notes; }
 
     public static Patient getPatient(int pid) {
@@ -161,9 +170,8 @@ public class Patient {
         }
     }
 
+    @TargetApi(26)
     public int getYearsOld() {
-        //Date bornDate = new Date(dob);
-        //return new Date().getYear() - bornDate.getYear();
-        return 0; //TODO: implement this
+        return Integer.valueOf(Year.now().toString()) - this.dob.get(this.dob.YEAR);
     }
 }
