@@ -25,34 +25,34 @@ public class Visit {
     public int visitID;
 
     @ColumnInfo(name = "pid")
-    private int pID;
+    public int pID;
 
     @ColumnInfo(name = "admin_id")
-    private int adminID;
+    public int adminID;
 
     @ColumnInfo(name = "visit_date")
-    private String vDate;
+    public String vDate;
 
     @ColumnInfo(name = "notes")
-    private String notes;
+    public String notes;
 
     @ColumnInfo(name = "height")
-    private double height;
+    public double height;
 
     @ColumnInfo(name = "weight")
-    private double weight;
+    public double weight;
 
     @ColumnInfo(name = "sexually_active")
-    private boolean sexActive;
+    public boolean sexActive;
 
     @ColumnInfo(name = "patient_symptoms")
-    private String symptoms;
+    public String symptoms;
 
     @ColumnInfo(name = "is_chronic")
-    private boolean isChronic;
+    public boolean isChronic;
 
     @ColumnInfo(name = "urgent_status")
-    private boolean urgentStat;
+    public boolean urgentStat;
 
     //TODO: Add search functionality by name
 
@@ -79,6 +79,8 @@ public class Visit {
         this.isChronic = chron;
         this.urgentStat = uSat;
     }
+
+    public Visit() {}
 
     public String getNotes() {
         return this.notes;

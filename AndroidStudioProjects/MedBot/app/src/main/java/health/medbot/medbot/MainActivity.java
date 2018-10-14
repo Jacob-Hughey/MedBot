@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickNewPatient(View view) {
-        db.userDao().insertPatient(new Patient(0, "bluezah", "test", "other", 'a', 25, 521, false, false ,false));
+        //db.userDao().insertPatient(new Patient(0, "bluezah", "test", "other", 'a', 25, 521, false, false ,false));
+        Intent intent = new Intent(getBaseContext(), NewPatientActivity.class);
+        startActivity(intent);
     }
 }

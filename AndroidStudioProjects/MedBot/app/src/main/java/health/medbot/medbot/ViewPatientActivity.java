@@ -36,6 +36,6 @@ public class ViewPatientActivity extends AppCompatActivity {
         isSexuallyActive.setText(patient.sexActive ? " IS Sexually Active" : "NOT Sexually Active");
 
         TextView notes = findViewById(R.id.notes);
-        //notes.setText(patient.get);
+        notes.setText(patient.getNotes());
     }
 }

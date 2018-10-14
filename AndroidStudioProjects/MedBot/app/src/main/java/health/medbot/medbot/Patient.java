@@ -45,6 +45,9 @@ public class Patient {
     @ColumnInfo(name = "urgent_status")
     public boolean urgentStatus;
 
+    @ColumnInfo(name = "notes")
+    public String notes;
+
     /**
      * Constructor to define a user
      *
@@ -144,6 +147,8 @@ public class Patient {
     public void setSex(char sex) {
         this.sex = sex;
     }
+
+    public String getNotes() { return this.notes; }
 
     public static Patient getPatient(int pid) {
        return MainActivity.db.userDao().getPatient(pid);
