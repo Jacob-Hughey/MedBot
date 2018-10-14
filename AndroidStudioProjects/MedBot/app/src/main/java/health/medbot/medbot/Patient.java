@@ -1,4 +1,9 @@
 package health.medbot.medbot;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.util.Date;
 
 /**
@@ -7,20 +12,42 @@ import java.util.Date;
  * Created by Brandon Adame Gachuz on 10/13/18.
  */
 
+@Entity(tableName = "Patient")
 public class Patient {
 
-    private int pId;
+    @NonNull
+    @PrimaryKey
+    private int pid;
+
+    @ColumnInfo(name = "name")
     private String name;
+
+    @ColumnInfo(name = "location")
     private String location;
+
+    @ColumnInfo(name = "DOB")
     private Date dob;
+
+    @ColumnInfo(name = "sex")
     private char sex;
+
+    @ColumnInfo(name = "height")
     private double height;
+
+    @ColumnInfo(name = "weight")
     private double weight;
+
+    @ColumnInfo(name = "sexualy_active")
     private boolean sexActive;
+
+    @ColumnInfo(name = "has_chronic_conditions")
     private boolean chronConditions;
 
+    @ColumnInfo(name = "urgent_status")
+    private boolean urgentStatus;
+
     /**
-     * Constructor to insert a user to the database.
+     * Constructor to define a user
      *
      * @param name String
      * @param location String
@@ -32,8 +59,8 @@ public class Patient {
      * @param chronConditions Boolean
      */
     public Patient(int pID, String name, String location, Date dob, char sex, double height, double weight,
-                 boolean sexActive, boolean chronConditions) {
-        this.pId = pID;
+                 boolean sexActive, boolean chronConditions, boolean uStat) {
+        this.pid = pID;
         this.name = name;
         this.location = location;
         this.dob = dob;
@@ -42,15 +69,16 @@ public class Patient {
         this.weight = weight;
         this.sexActive = sexActive;
         this.chronConditions = chronConditions;
+        this.urgentStatus = uStat;
     }
 
     /**
      * NULL constructor
      */
-    public Patient(){}
+    public Patient() {}
 
     public int getpId() {
-        return this.pId;
+        return this.pid;
     }
 
     public String getName() {
@@ -85,6 +113,10 @@ public class Patient {
         return this.chronConditions;
     }
 
+    public boolean getUrgentStatus() {
+        return this.urgentStatus;
+    }
+
     public void setName(String nName) {
         this.name = nName;
     }
@@ -107,5 +139,9 @@ public class Patient {
 
     public void setChronConditions(boolean nChron) {
         this.chronConditions = nChron;
+    }
+
+    public void setUrgentStatus(boolean stat) {
+        this.urgentStatus = stat;
     }
 }
