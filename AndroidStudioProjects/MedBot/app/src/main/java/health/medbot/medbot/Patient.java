@@ -1,10 +1,9 @@
 package health.medbot.medbot;
+
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
-
-import java.util.Date;
 
 /**
  * File: Patient.java
@@ -17,34 +16,34 @@ public class Patient {
 
     @NonNull
     @PrimaryKey(autoGenerate = true)
-    private int pid;
+    public int pid;
 
     @ColumnInfo(name = "name")
-    private String name;
+    public String name;
 
     @ColumnInfo(name = "location")
-    private String location;
+    public String location;
 
     @ColumnInfo(name = "DOB")
-    private Date dob;
+    public String dob;
 
     @ColumnInfo(name = "sex")
-    private char sex;
+    public char sex;
 
     @ColumnInfo(name = "height")
-    private double height;
+    public double height;
 
     @ColumnInfo(name = "weight")
-    private double weight;
+    public double weight;
 
-    @ColumnInfo(name = "sexualy_active")
-    private boolean sexActive;
+    @ColumnInfo(name = "sexually_active")
+    public boolean sexActive;
 
     @ColumnInfo(name = "has_chronic_conditions")
-    private boolean chronConditions;
+    public boolean chronConditions;
 
     @ColumnInfo(name = "urgent_status")
-    private boolean urgentStatus;
+    public boolean urgentStatus;
 
     /**
      * Constructor to define a user
@@ -58,7 +57,7 @@ public class Patient {
      * @param sexActive Boolean
      * @param chronConditions Boolean
      */
-    public Patient(int pID, String name, String location, Date dob, char sex, double height, double weight,
+    public Patient(int pID, String name, String location, String dob, char sex, double height, double weight,
                  boolean sexActive, boolean chronConditions, boolean uStat) {
         this.pid = pID;
         this.name = name;
@@ -89,13 +88,10 @@ public class Patient {
         return this.location;
     }
 
-    public Date getDob() {
+    public String getDob() {
         return this.dob;
     }
 
-    public char getSex() {
-        return this.sex;
-    }
 
     public double getHeight() {
         return this.height;
@@ -105,7 +101,7 @@ public class Patient {
         return this.weight;
     }
 
-    public boolean getsexActive() {
+    public boolean getSexActive() {
         return this.sexActive;
     }
 
@@ -145,8 +141,11 @@ public class Patient {
         this.urgentStatus = stat;
     }
 
-    public static Patient getPatient(int patientId) {
-        //TODO: return a real patient
-        return new Patient(patientId, "fake name", "fake location", new Date(), 'o', 50.2, 55521, false, false, false);
+    public void setSex(char sex) {
+        this.sex = sex;
+    }
+
+    public static Patient getPatient(int pid) {
+       return MainActivity.db.userDao().getPatient(pid);
     }
 }

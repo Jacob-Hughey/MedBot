@@ -3,6 +3,7 @@ package health.medbot.medbot;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -16,13 +17,32 @@ import java.util.List;
 public interface DaoAccess {
 
     @Insert
-    public void insertPatient(Patient p);
+    void insertPatient(Patient p);
+
+    @Update
+    void updatePatient(Patient p);
 
     @Query("SELECT * FROM patient")
-    public List<Patient> getAll();
+    List<Patient> getAll();
 
-    @Query("SELECT pid FROM patient")
-    public int getpID();
+    @Query("SELECT * from patient where pid = :pid")
+    Patient getPatient(int pid);
 
+    @Query("select weight from patient where pid = :pid")
+    double getWeight(int pid);
 
+    @Query("select height from patient where pid = :pid")
+    double getHeight(int pid);
+
+    @Query("select name from patient where pid = :pid")
+    String getName(int pid);
+
+    @Query("select urgent_status from patient where pid = :pid")
+    boolean geturgentStatus(int pid);
+
+    @Query("select notes from visit where pid = :pid")
+    String getNotes(int pid);
+
+    @Query("select patient_symptoms from visit where pid = :pid")
+    String getSymptoms(int pid);
 }
