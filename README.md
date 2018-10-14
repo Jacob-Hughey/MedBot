@@ -1,4 +1,4 @@
-# Medbot
+# MedBot
 
 MedBot is a program created by Jacob Hughey, Brandon Adame Gachuc, and Nolan Scobie at HackDuke 2018.
 

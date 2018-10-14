@@ -21,9 +21,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NewPatientActivity" />
+        <activity android:name=".NewPatientActivity" android:noHistory="true" />
         <activity android:name=".ViewPatientActivity" />
-        <activity android:name=".ViewVisitActivity"></activity>
+        <activity android:name=".ViewVisitActivity" />
+        <activity android:name=".NewVisitActivity" android:noHistory="true"></activity>
     </application>
 
 </manifest>

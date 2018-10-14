@@ -17,6 +17,11 @@ public class NewPatientActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_patient);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         int pid = getIntent().getIntExtra("pid", 0);
         this.pid = pid;
@@ -28,10 +33,10 @@ public class NewPatientActivity extends AppCompatActivity {
     }
 
     private void loadFromPatient(Patient patient) {
-        return;
-        /*
-        CheckBox isUrgentView = findViewById(R.id.isUrgent);
+        this.pid = patient.getpId();
+
         EditText nameView = findViewById(R.id.name);
+        CheckBox isUrgentView = findViewById(R.id.isUrgent);
         EditText locationView = findViewById(R.id.location);
         EditText dobView = findViewById(R.id.dob);
         RadioGroup sexView = findViewById(R.id.sexRadio);
@@ -41,8 +46,16 @@ public class NewPatientActivity extends AppCompatActivity {
         RadioGroup sexuallyActiveView = findViewById(R.id.sexuallyActive);
         RadioButton selectedSexuallyActiveView = findViewById(sexuallyActiveView.getCheckedRadioButtonId());
         EditText notes = findViewById(R.id.notes);
-        */
-        //isUrgentView.setChecked(patient.);
+
+        nameView.setText(patient.name);
+        isUrgentView.setChecked(patient.getUrgentStatus());
+        locationView.setText(patient.getLocation());
+        dobView.setText(patient.getDob());
+        //TODO: sex radio
+        heightView.setText(Double.toString(patient.getHeight()));
+        weightView.setText(Double.toString(patient.getWeight()));
+        //TODO: sexually active radio
+        notes.setText(patient.getNotes());
     }
 
     public void SaveRecord(View view) {
@@ -73,14 +86,15 @@ public class NewPatientActivity extends AppCompatActivity {
         if (pid == 0) {
             pid = (int)MainActivity.db.userDao().insertPatient(patient);
             patient.pid = pid;
+
+            //load view of patient in new activity
+            Intent intent = new Intent(getBaseContext(), ViewPatientActivity.class);
+            intent.putExtra("pid", patient.getpId());
+            startActivity(intent);
         }
         else {
             MainActivity.db.userDao().updatePatient(patient);
+            finish();
         }
-
-        //load view of patient in new activity
-        Intent intent = new Intent(getBaseContext(), ViewPatientActivity.class);
-        intent.putExtra("pid", patient.getpId());
-        startActivity(intent);
     }
 }
