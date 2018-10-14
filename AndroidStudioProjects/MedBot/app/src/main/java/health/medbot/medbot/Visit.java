@@ -48,7 +48,13 @@ public class Visit {
     @ColumnInfo(name = "patient_symptoms")
     private String symptoms;
 
-    //TODO: Add search functionality by name, save visit to database
+    @ColumnInfo(name = "is_chronic")
+    private boolean isChronic;
+
+    @ColumnInfo(name = "urgent_status")
+    private boolean urgentStat;
+
+    //TODO: Add search functionality by name
 
     /**
      *
@@ -61,7 +67,7 @@ public class Visit {
      * @param sxActv
      */
     public Visit(int pID, int adminID, String d, String nts, double height, double weight,
-                 boolean sxActv, String symp) {
+                 boolean sxActv, String symp, boolean chron, boolean uSat) {
         this.pID = pID;
         this.adminID = adminID;
         this.vDate = d;
@@ -70,10 +76,8 @@ public class Visit {
         this.weight = weight;
         this.sexActive = sxActv;
         this.symptoms = symp;
-    }
-
-    public Visit(Patient p) {
-
+        this.isChronic = chron;
+        this.urgentStat = uSat;
     }
 
     public String getNotes() {
@@ -104,7 +108,18 @@ public class Visit {
         return this.symptoms;
     }
 
-    public void updatePatient() {
+    public boolean getIsChronic() {
+        return this.isChronic;
+    }
 
+    public boolean geturgentStatus() {
+        return this.urgentStat;
+    }
+
+    public void updatePatient(Patient p) {
+        p.setWeight(this.weight);
+        p.setSexActive(this.sexActive);
+        p.setChronConditions(this.isChronic);
+        p.setUrgentStatus(this.urgentStat);
     }
 }
