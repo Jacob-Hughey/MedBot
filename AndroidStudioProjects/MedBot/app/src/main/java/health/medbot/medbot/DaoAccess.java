@@ -17,7 +17,7 @@ import java.util.List;
 public interface DaoAccess {
 
     @Insert
-    void insertPatient(Patient p);
+    long insertPatient(Patient p);
 
     @Update
     void updatePatient(Patient p);

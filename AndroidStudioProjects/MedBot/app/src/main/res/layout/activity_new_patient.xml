@@ -35,9 +35,9 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:srcCompat="@tools:sample/avatars[13]" />
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        tools:srcCompat="@mipmap/ic_launcher" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -45,7 +45,7 @@
                         android:orientation="vertical">
 
                         <CheckBox
-                            android:id="@+id/checkBox"
+                            android:id="@+id/isUrgent"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Needs Urgent Attention" />
@@ -54,6 +54,7 @@
                             android:id="@+id/button"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:gravity="bottom"
                             android:text="Take Picture" />
                     </LinearLayout>
 
@@ -70,7 +71,7 @@
                         android:text="Name" />
 
                     <EditText
-                        android:id="@+id/editText"
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -88,7 +89,7 @@
                         android:text="Location" />
 
                     <EditText
-                        android:id="@+id/editText2"
+                        android:id="@+id/location"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -106,7 +107,7 @@
                         android:text="DOB" />
 
                     <EditText
-                        android:id="@+id/editText3"
+                        android:id="@+id/dob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -125,8 +126,9 @@
                         android:text="Sex" />
 
                     <RadioGroup
+                        android:id="@+id/sexRadio"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -135,21 +137,21 @@
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/radioButton"
+                                android:id="@+id/female"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Female" />
 
                             <RadioButton
-                                android:id="@+id/radioButton2"
+                                android:id="@+id/male"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Male" />
 
                             <RadioButton
-                                android:id="@+id/radioButton3"
+                                android:id="@+id/other"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -171,7 +173,7 @@
                         android:text="Height" />
 
                     <EditText
-                        android:id="@+id/editText4"
+                        android:id="@+id/height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -190,7 +192,7 @@
                         android:text="Weight" />
 
                     <EditText
-                        android:id="@+id/editText5"
+                        android:id="@+id/weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:ems="10"
@@ -209,8 +211,9 @@
                         android:text="Sexually Active" />
 
                     <RadioGroup
+                        android:id="@+id/sexuallyActive"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" >
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -219,14 +222,14 @@
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/radioButton4"
+                                android:id="@+id/yes"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:text="Yes" />
 
                             <RadioButton
-                                android:id="@+id/radioButton5"
+                                android:id="@+id/no"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -246,7 +249,7 @@
                 android:text="Notes" />
 
             <EditText
-                android:id="@+id/editText6"
+                android:id="@+id/notes"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -256,6 +259,7 @@
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="SaveRecord"
                 android:text="Save Record" />
 
         </LinearLayout>
