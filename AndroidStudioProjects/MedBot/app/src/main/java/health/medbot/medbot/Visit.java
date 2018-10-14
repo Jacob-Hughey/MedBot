@@ -93,5 +93,7 @@ public class Visit {
         return this.adminID;
     }
 
-
+    public Date getvDate() {
+        return this.vDate;
+    }
 }
