@@ -1,6 +1,6 @@
 # MedBot
 
-MedBot is a program created by Jacob Hughey, Brandon Adame Gachuc, and Nolan Scobie at HackDuke 2018.
+MedBot is a program created by Jacob Hughey, Brandon Adame Gachuz, and Nolan Scobie at HackDuke 2018.
 
 The application was created with the intention of bringing quick and affordable health screenings to
 developing countries, where diseases are rampant and health care is greatly lacking. By allowing volunteers
